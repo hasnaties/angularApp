@@ -1,8 +1,18 @@
-<h2>Home</h2>
-<button (click)="buttonClick()">Display Details</button>
+<h3>Allocate server</h3>
+<form (submit)="allocate(allocateForm)" #allocateForm="ngForm">
+    <label for="region">Region: </label>
+    <input type="text" name="region" ngModel placeholder="Enter the region name">
+    <button type="submit">Request</button>
+</form> 
+<br>
+<p>{{allocateResponse}}</p>
+
 <hr>
-<p *ngIf="clicked">Details are displayed!</p>
-<hr>
-<p *ngFor="let log of logs; let i = index"
- [ngStyle]="{backgroundColor: i > 5 ? 'green' : 'transparent'}"
- [ngClass]="{whiteText: i > 5}">{{ log }}</p>
+
+<h3>Deallocate server</h3>
+<form (submit)="deallocate(deallocateForm)" #deallocateForm="ngForm">
+    <label for="server">Server: </label>
+    <input type="text" name="server" ngModel placeholder="Enter the server name">
+    <button type="submit">Send</button>
+</form>
+<p *ngIf="deallocateResponse">Server deallocated successfully!</p>
